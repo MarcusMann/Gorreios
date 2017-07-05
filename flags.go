@@ -6,7 +6,8 @@ import (
 	"strings"
 )
 
-func init() {
+// Flags da a possibilidade
+func Flags() {
 	cep := flag.Uint64("cep", 0, "-cep=41820460 faz a busca via cep")
 	endereco := flag.String("endereco", "", "-endereco faz a busca via endereco")
 
@@ -23,7 +24,7 @@ func init() {
 	enderecos := strings.Split(*endereco, ",")
 
 	if *endereco != "" {
-		bendereco, err := BuscarViaEndereco(enderecos[0], enderecos[1], enderecos[2])
+		bendereco, err := BuscarViaEndereco(enderecos...)
 		if err != nil {
 			fmt.Println(err.Error())
 		}
