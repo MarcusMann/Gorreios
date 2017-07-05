@@ -13,13 +13,14 @@ type Endereco struct {
 	Gia         string
 }
 
+var url correios
+
 // EnderecoLista retorna uma lista de endereços
 type EnderecoLista []Endereco
 
-// GetCep recupera os dados passando o cep como argumento.
-func GetByCep(cep uint32) (*Endereco, error) {
+// BuscarViaCep recupera os dados passando o cep como argumento.
+func BuscarViaCep(cep uint32) (*Endereco, error) {
 	var endereco Endereco
-	var url url
 
 	if err := unmarshalCorreios(url.GetCepURL(cep), &endereco); err != nil {
 		return nil, err
@@ -28,10 +29,9 @@ func GetByCep(cep uint32) (*Endereco, error) {
 	return &endereco, nil
 }
 
-// GetEndereco retorna uma lista dos endereços
-func GetByEndereco(estado, cidade, bairro string) (*EnderecoLista, error) {
+// BuscarViaEndereco retorna uma lista dos endereços
+func BuscarViaEndereco(estado, cidade, bairro string) (*EnderecoLista, error) {
 	var enderecoLista EnderecoLista
-	var url url
 
 	if err := unmarshalCorreios(url.GetAddressURL(estado, cidade, bairro), &enderecoLista); err != nil {
 		return nil, err

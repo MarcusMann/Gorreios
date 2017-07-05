@@ -7,13 +7,13 @@ import (
 	"net/http"
 )
 
-type url string
+type correios string
 
-func (url) GetCepURL(cep uint32) string {
+func (correios) GetCepURL(cep uint32) string {
 	return fmt.Sprintf("https://viacep.com.br/ws/%d/json/", cep)
 }
 
-func (url) GetAddressURL(estado, cidade, bairro string) string {
+func (correios) GetAddressURL(estado, cidade, bairro string) string {
 	return fmt.Sprintf("https://viacep.com.br/ws/%s/%s/%s/json/", estado, cidade, bairro)
 }
 
