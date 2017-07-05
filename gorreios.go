@@ -13,8 +13,8 @@ func (correios) GetCepURL(cep uint32) string {
 	return fmt.Sprintf("https://viacep.com.br/ws/%d/json/", cep)
 }
 
-func (correios) GetAddressURL(estado, cidade, bairro string) string {
-	return fmt.Sprintf("https://viacep.com.br/ws/%s/%s/%s/json/", estado, cidade, bairro)
+func (correios) GetAddressURL(endereco ...string) string {
+	return fmt.Sprintf("https://viacep.com.br/ws/%s/%s/%s/json/", endereco[0], endereco[1], endereco[2])
 }
 
 // UnmarshalCorreios analisa os dados codificados em JSON e armazena o resultado no valor apontado por v

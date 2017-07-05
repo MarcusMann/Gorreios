@@ -33,7 +33,7 @@ func BuscarViaCep(cep uint32) (*Endereco, error) {
 func BuscarViaEndereco(endereco ...string) (*EnderecoLista, error) {
 	var enderecoLista EnderecoLista
 
-	if err := unmarshalCorreios(url.GetAddressURL(endereco[0], endereco[1], endereco[2]), &enderecoLista); err != nil {
+	if err := unmarshalCorreios(url.GetAddressURL(endereco...), &enderecoLista); err != nil {
 		return nil, err
 	}
 
