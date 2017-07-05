@@ -24,22 +24,22 @@ func unmarshalCorreios(URL string, v interface{}) error {
 	// Faz a requisição dos dados que irão ser recebidos via Get, caso não consiga receber, fecha a requisição e retorna um erro.
 	request, err := http.NewRequest("GET", URL, nil)
 	if err != nil {
-		request.Body.Close()
 		return err
 	}
 
-	// Faz uma requisição via json
+	// Seta que a requisição tem que ser via Json
 	request.Header.Set("Content-Type", "application/json;charset=utf-8")
 
 	response, err := client.Do(request)
 	if err != nil {
-		response.Body.Close()
 		return err
 	}
 
+	// fecha a response e retorna um erro
+	defer response.Body.Close()
+
 	// Se os status recebidos for diferente de 200, fecha o corpo e retorna um erro
 	if response.StatusCode != http.StatusOK {
-		response.Body.Close()
 		return fmt.Errorf("ocorreu um erro! StatusCode: %d", response.StatusCode)
 	}
 
@@ -55,7 +55,6 @@ func unmarshalCorreios(URL string, v interface{}) error {
 		return err
 	}
 
-	// fecha a response e retorna um erro
-	response.Body.Close()
+	// retorna um erro
 	return err
 }

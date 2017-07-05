@@ -30,10 +30,10 @@ func BuscarViaCep(cep uint32) (*Endereco, error) {
 }
 
 // BuscarViaEndereco retorna uma lista dos endereços
-func BuscarViaEndereco(estado, cidade, bairro string) (*EnderecoLista, error) {
+func BuscarViaEndereco(endereco ...string) (*EnderecoLista, error) {
 	var enderecoLista EnderecoLista
 
-	if err := unmarshalCorreios(url.GetAddressURL(estado, cidade, bairro), &enderecoLista); err != nil {
+	if err := unmarshalCorreios(url.GetAddressURL(endereco[0], endereco[1], endereco[2]), &enderecoLista); err != nil {
 		return nil, err
 	}
 
