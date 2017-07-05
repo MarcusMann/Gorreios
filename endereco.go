@@ -17,7 +17,7 @@ type Endereco struct {
 type EnderecoLista []Endereco
 
 // GetCep recupera os dados passando o cep como argumento.
-func GetCep(cep uint32) (*Endereco, error) {
+func GetByCep(cep uint32) (*Endereco, error) {
 	var endereco Endereco
 	var url url
 
@@ -29,7 +29,7 @@ func GetCep(cep uint32) (*Endereco, error) {
 }
 
 // GetEndereco retorna uma lista dos endereços
-func GetEndereco(estado, cidade, bairro string) (*EnderecoLista, error) {
+func GetByEndereco(estado, cidade, bairro string) (*EnderecoLista, error) {
 	var enderecoLista EnderecoLista
 	var url url
 
