@@ -47,11 +47,11 @@ Uma outra forma de obter o resultado esperado é chamando a aplicação dessa fo
 package main
 
 import (
-	_ "github.com/MarcusMann/gorreios"
+	"github.com/MarcusMann/gorreios"
 )
 
 func main() {
-
+	gorreios.Flags()
 }
 ```
 
