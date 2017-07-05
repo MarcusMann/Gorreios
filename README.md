@@ -7,6 +7,8 @@ Para instalar o gorreios execute o comando abaixo em seu terminal:
 go get github.com/MarcusMann/Gorreios
 ```
 
+### Como usar:
+
 Para chamar a aplicação dentro do seu arquivo **main.go** escreva o código abaixo:
 
 ```go
