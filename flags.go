@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Flags da a possibilidade
+// Flags da a possibilidade de instanciar as funções sem ter que chama-las no main()
 func Flags() {
 	cep := flag.Uint64("cep", 0, "-cep=41820460 faz a busca via cep")
 	endereco := flag.String("endereco", "", "-endereco faz a busca via endereco")
