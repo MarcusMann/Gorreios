@@ -48,13 +48,8 @@ func unmarshalCorreios(URL string, v interface{}) error {
 	if err != nil {
 		return err
 	}
+	defer response.Body.Close()
 
 	// Faz um parse entre os dados recebidos e interface passada no argumento.
-	err = json.Unmarshal(body, &v)
-	if err != nil {
-		return err
-	}
-
-	// retorna um erro
-	return err
+	return json.Unmarshal(body, &v)
 }
