@@ -10,7 +10,7 @@ import (
 type correios string
 
 func (correios) GetCepURL(cep uint32) string {
-	return fmt.Sprintf("https://viacep.com.br/ws/%d/json/", cep)
+	return fmt.Sprintf("https://viacep.com.br/ws/%08d/json/", cep)
 }
 
 func (correios) GetAddressURL(endereco ...string) string {
