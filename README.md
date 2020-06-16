@@ -1,67 +1,29 @@
-Instalação
-========
-
-Para instalar o gorreios execute o comando abaixo em seu terminal:
+## Instalação
+Você pode obter o pacote rodando o comando abaixo:
 
 ```go
-go get github.com/MarcusMann/Gorreios
+go get github.com/marcuxyz/gorreios
 ```
 
-### Como usar:
-
-Para chamar a aplicação dentro do seu arquivo **main.go** escreva o código abaixo:
+## Como usar:
+Você pode importar o pacote desta forma:
 
 ```go
-package main
-
-import (
-	"fmt"
-
-	"github.com/MarcusMann/gorreios"
-)
-
-func main() {
-	correios, err := gorreios.BuscarViaEndereco("BA", "Salvador", "Pituba")
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-
-	fmt.Println(correios)
-}
+import "github.com/marcuxyz/gorreios"
 ```
-Ao executar o comando  `go run main.go` ele irá trazer todas as informações possíveis, dos bairros encontrados através do Estado, Cidade e Logradouro. A busca também pode ser realizada por cep, veja:
 
-```go
-...
-func main() {
-	correios, err := gorreios.BuscarViaCep(41820460)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	
-	fmt.Println(correios)
-}
-```
-Uma outra forma de obter o resultado esperado é chamando a aplicação dessa forma:
+E para obter um endereço através de um cep você pode usar o código a seguir:
+
 ```go
 package main
 
 import (
-	"github.com/MarcusMann/gorreios"
+  "fmt"
+  "github.com/marcuxyz/gorreios"
 )
 
 func main() {
-	gorreios.Flags()
+  address := gorreios.GetAddressByCep("41820-460")
+  fmt.Printlnf("%+v\n", address)
 }
 ```
-
-Agora você pode executar através de flags, veja:
-```go
-go run main.go -cep=41820460
-```
-
-Veja um pequeno vídeo abaixo de como funcionar a questão das flags.
-
-[![asciicast](https://asciinema.org/a/DQDIWanuTHPzEuWBQ7RoLFf27.png)](https://asciinema.org/a/DQDIWanuTHPzEuWBQ7RoLFf27)
-
-Você pode ver o vídeo completo diretamente no meu canal do [**youtube**](https://youtu.be/i0hz-Q-xjXs).
